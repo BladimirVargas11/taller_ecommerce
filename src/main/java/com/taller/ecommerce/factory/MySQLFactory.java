@@ -4,7 +4,9 @@ import com.taller.ecommerce.model.MySQLProduct;
 import com.taller.ecommerce.model.Product;
 import com.taller.ecommerce.repository.MySQLDAO;
 import com.taller.ecommerce.repository.ProductRepository;
+import org.springframework.stereotype.Component;
 
+@Component("mysql")
 public class MySQLFactory implements ProductFactory {
     @Override
     public Product createProduct(String id, String description, float price) {

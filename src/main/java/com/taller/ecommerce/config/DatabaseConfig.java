@@ -10,26 +10,27 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
+
 @Configuration
 public class DatabaseConfig {
-
     @Value("${db.type}")
     private String dbType;
 
+    private final Map<String, ProductFactory> productFactoryMap;
+
+
+    public DatabaseConfig(Map<String, ProductFactory> productFactoryMap) {
+        this.productFactoryMap = productFactoryMap;
+    }
+
     @Bean
     public ProductFactory productFactory() {
-        try {
-            switch (dbType.toLowerCase()) {
-                case "mysql":
-                    return new MySQLFactory();
-                case "oracle":
-                    return new OracleFactory();
-                default:
-                    throw new IllegalArgumentException("Database type not supported: " + dbType);
-            }
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Failed to create ProductFactory: " + e.getMessage());
+        ProductFactory factory = productFactoryMap.get(dbType.toLowerCase());
+        if (factory == null) {
+            throw new IllegalArgumentException("Database type not supported: " + dbType);
         }
+        return factory;
     }
 
     @Bean
