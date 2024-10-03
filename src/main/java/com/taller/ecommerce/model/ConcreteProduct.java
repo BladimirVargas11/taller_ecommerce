@@ -5,17 +5,17 @@ public class ConcreteProduct implements Product {
     private String description;
     private float price;
 
-    // Constructor vacío
+
     public ConcreteProduct() {}
 
-    // Constructor con parámetros (opcional)
+
     public ConcreteProduct(String id, String description, float price) {
         this.id = id;
         this.description = description;
         this.price = price;
     }
 
-    // Implementación de los métodos de la interfaz
+
     @Override
     public String getId() {
         return id;
@@ -31,7 +31,7 @@ public class ConcreteProduct implements Product {
         return price;
     }
 
-    // Getters y setters (opcional)
+
     public void setId(String id) {
         this.id = id;
     }

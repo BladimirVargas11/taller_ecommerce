@@ -18,9 +18,7 @@ public class ProductController {
 
     @PostMapping
     public ConcreteProduct createProduct(@RequestBody ConcreteProduct product) {
-        // Lógica para guardar el producto, por ejemplo:
-        // productService.save(product);
-        return product; // Retornar el producto creado
+        return product;
     }
     @GetMapping("/{id}")
     public Product getProduct(@PathVariable String id) {
