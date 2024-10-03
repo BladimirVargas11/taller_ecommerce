@@ -1,6 +1,8 @@
 package com.taller.ecommerce.model;
 
-public class MySQLProduct implements Product {
+import java.util.List;
+
+public class MySQLProduct extends Product {
     private String id;
     private String description;
     private float price;
@@ -11,18 +13,4 @@ public class MySQLProduct implements Product {
         this.price = price;
     }
 
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
-    @Override
-    public float getPrice() {
-        return price;
-    }
 }
